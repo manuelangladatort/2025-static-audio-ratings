@@ -8,6 +8,16 @@ from psynet.page import InfoPage
 from psynet.timeline import join, FailedValidation
 
 
+def questionnaire_soniclogos():
+    return join(
+        introduction_questions(),
+        Age(),
+        Gender(),
+        GMSI(subscales=["Musical Training"]),
+        feedback(),
+        debrief_soniclogos()
+    )
+
 def questionnaire():
     return join(
         introduction_questions(),
@@ -281,6 +291,32 @@ def debrief_emotion_rating():
             """
             The aim of this study is to understand the role of emotions in music. 
             The melodies you heard were from another experiment where particiaptns sung to melodies.
+            """
+        )
+        tags.p(
+            """
+            If you wish to find out more about this experiment, or have any complaints or questions, please get in touch. You can contact me, Dr Manuel Anglada-Tort, at m.anglada-tort@gold.ac.uk. 
+            If you have any ethical concerns, you can contact the Chair of the Psychology Ethics Committee at Goldsmiths, University of London, 
+            Dr Maria Herrojo Ruiz, m.herrojo-ruiz@gold.ac.uk. 
+            """
+        )
+
+    return InfoPage(html, time_estimate=5)
+
+
+def debrief_soniclogos():
+    html = tags.div()
+
+    with html:
+        tags.p(
+            """
+            Thank you for taking part in this experiment and your contribution to science! 
+            """
+        )
+        tags.p(
+            """
+            The aim of this experiment is to investigate the musical features of sonic logos and how they relate to different measures of effectiveness. 
+            This will allow us to identify the different ways in which musical features such as melody, rhythm, and tonality, influence consumer perceptions in the context of sonic logos.
             """
         )
         tags.p(
